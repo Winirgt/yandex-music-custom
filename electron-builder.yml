@@ -1,0 +1,43 @@
+appId: ru.winirgt.music
+productName: Yandex Music Custom
+directories:
+  buildResources: build
+  output: release
+files:
+  - out/**/*
+  - package.json
+extraResources:
+  - from: out/main/mod.js
+    to: ymod-mod/main.js
+  - from: out/main/chunks
+    to: ymod-mod/chunks
+  - from: out/mod/injector.js
+    to: ymod-mod/injector.js
+  - from: out/preload/settings.js
+    to: ymod-mod/preload-settings.js
+  - from: out/renderer
+    to: ymod-mod/renderer
+  - from: out/main/patch-worker.js
+    to: patch-worker.js
+  - from: node_modules/ffmpeg-static/ffmpeg.exe
+    to: ffmpeg.exe
+  - from: out/main/chunks
+    to: chunks
+asar: true
+win:
+  icon: build/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: false
+  createStartMenuShortcut: false
+  shortcutName: Yandex Music Custom
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  include: build/installer.nsh
+  artifactName: ${productName}-${version}-setup.${ext}

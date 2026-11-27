@@ -1,0 +1,10 @@
+node_modules
+out
+release
+qa-screenshots/
+scripts/qa-*.mjs
+*.blockmap
+builder-debug.yml
+*.log
+.DS_Store
+.env

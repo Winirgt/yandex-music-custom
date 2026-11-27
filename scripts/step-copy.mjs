@@ -1,0 +1,10 @@
+﻿import fs from 'node:fs';
+import path from 'node:path';
+import os from 'node:os';
+const tmp = path.join(os.tmpdir(), 'opencode');
+const src = path.join(process.env.LOCALAPPDATA, 'Programs', 'YandexMusic');
+const appCopy = path.join(tmp, 'ymod-test-app');
+fs.rmSync(appCopy, { recursive: true, force: true });
+console.log('copying...');
+fs.cpSync(src, appCopy, { recursive: true });
+console.log('copied ok');
